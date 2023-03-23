@@ -14,22 +14,23 @@ public class Main {
             System.out.println("Opcion 2: Mostrar sismos de mayor magnitud");
             System.out.println("Opcion 3: Contar sismos mayores o igual a 5.0");
             System.out.println("Opcion 4: Enviar SMS por cada sismo mayor o igual a 7.0");
-            System.out.println("Opcion 5:Salir del programa");
+            System.out.println("Opcion 5: Salir del programa");
             int OpcionIngresada = teclado.nextInt();
             double[] sismos = new double[168];
-
+            double nMayor;
+            int SmayoresQue5;
             switch (OpcionIngresada) {
                 case 1:
                     sismos = ingresoDeDatos();
                     break;
                 case 2:
-                    sismosMayorMagnitud(sismos);
+                    nMayor=sismosMayorMagnitud(sismos);
                     break;
                 case 3:
-                    sismosMayoresQue5();
+                    SmayoresQue5 = sismosMayoresQue5(sismos);
                     break;
                 case 4:
-                    enviarSMSPorCadaSismo();
+                    enviarSMSPorCadaSismo(sismos);
                     break;
                 case 5:
                     salir=false;
@@ -40,17 +41,40 @@ public class Main {
             }
         }while (salir == true);
     }
-    private static void enviarSMSPorCadaSismo() {
+    private static void enviarSMSPorCadaSismo(double[] sismosEntregadas3) {
 
+        int contador = 0;
+
+        for (int i = 0; i < sismosEntregadas3.length; i++) {
+            if (sismosEntregadas3[i] >= 7) {
+                System.out.println("Alerta!!! se debe evacuar zona costera!");
+            }
+        }
     }
 
-    public static void sismosMayoresQue5() {
+    private static int sismosMayoresQue5(double[] sismosEntregadas2) {
 
+        int contador = 0;
+
+        for (int i = 0; i < sismosEntregadas2.length; i++) {
+            if (sismosEntregadas2[i]>=5){
+                contador++;
+            }
+        }
+        System.out.println("hay " + contador+ " sismos mayores que 5");
+        return contador;
     }
 
-    private static void sismosMayorMagnitud(double[] sismosEntregadas) {
+    private static double sismosMayorMagnitud(double[] sismosEntregadas) {
+        double nMayor = sismosEntregadas[0];
 
-
+        for (int i = 0; i<sismosEntregadas.length;i++) {
+            if (sismosEntregadas[i] > nMayor) {
+                nMayor = sismosEntregadas[i];
+            }
+        }
+        System.out.println("El sismo de mayor magnitud es: "+ nMayor);
+        return nMayor;
     }
 
     public static double[] ingresoDeDatos() {
