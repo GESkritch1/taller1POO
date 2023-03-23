@@ -8,6 +8,7 @@ public class Main {
         boolean salir = true;
         do {
 
+
             System.out.println("elija 1 opcion del menu con un numero: ");
             System.out.println("Opcion 1: Ingresar datos");
             System.out.println("Opcion 2: Mostrar sismos de mayor magnitud");
@@ -15,13 +16,14 @@ public class Main {
             System.out.println("Opcion 4: Enviar SMS por cada sismo mayor o igual a 7.0");
             System.out.println("Opcion 5:Salir del programa");
             int OpcionIngresada = teclado.nextInt();
+            double[] sismos = new double[168];
 
             switch (OpcionIngresada) {
                 case 1:
-                    ingresoDeDatos();
+                    sismos = ingresoDeDatos();
                     break;
                 case 2:
-                    sismosMayorMagnitud();
+                    sismosMayorMagnitud(sismos);
                     break;
                 case 3:
                     sismosMayoresQue5();
@@ -46,7 +48,8 @@ public class Main {
 
     }
 
-    private static void sismosMayorMagnitud() {
+    private static void sismosMayorMagnitud(double[] sismosEntregadas) {
+
 
     }
 
@@ -59,10 +62,6 @@ public class Main {
         for (int i = 0; i<168; i++){
 
             datos[i] = Math.floor(((rnd.nextDouble(0.0,9.9))*10)/10);
-        }
-
-        for (int i = 0;i<168; i++){
-            System.out.println(datos[i]);
         }
 
         return datos;
