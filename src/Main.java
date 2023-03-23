@@ -6,7 +6,11 @@ public class Main {
 
     private static void menu() {
         boolean salir = true;
-        do {
+        double[] sismos = new double[168];
+        double nMayor;
+        int SmayoresQue5;
+
+    do {
 
 
             System.out.println("elija 1 opcion del menu con un numero: ");
@@ -16,9 +20,7 @@ public class Main {
             System.out.println("Opcion 4: Enviar SMS por cada sismo mayor o igual a 7.0");
             System.out.println("Opcion 5: Salir del programa");
             int OpcionIngresada = teclado.nextInt();
-            double[] sismos = new double[168];
-            double nMayor;
-            int SmayoresQue5;
+
             switch (OpcionIngresada) {
                 case 1:
                     sismos = ingresoDeDatos();
@@ -85,7 +87,7 @@ public class Main {
 
         for (int i = 0; i<168; i++){
 
-            datos[i] = Math.floor(((rnd.nextDouble(0.0,9.9))*10)/10);
+            datos[i] = rnd.nextDouble()*9.9;
         }
 
         return datos;
